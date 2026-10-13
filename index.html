@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tu Socio Remoto | Administración sin fricción para emprendedores en Paraná</title>
+<meta name="description" content="Administración remota para emprendedores de Paraná: te llevo las cuentas por WhatsApp, controlo tu caja y te digo qué conviene hacer. Sin planillas, sin vueltas.">
+<meta name="theme-color" content="#162842">
+
+<!-- Vista previa al compartir por WhatsApp / redes.
+     REEMPLAZÁ "TU-DOMINIO" por tu dirección real (ej.: https://tusocioremoto.com.ar) y subí og-image.png a esa carpeta. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="Tu Socio Remoto">
+<meta property="og:title" content="Tu Socio Remoto | Vos operá el negocio, yo ordeno la caja">
+<meta property="og:description" content="No te vendo una planilla: te llevo las cuentas. Mandame tu día por WhatsApp y te devuelvo tu negocio en números.">
+<meta property="og:image" content="https://TU-DOMINIO/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#162842; --navy-2:#1E3557; --gold:#C18625; --gold-d:#8A5E10; --slate:#3A3A3A;
+  --light:#F8F9FA; --line:#E3E7EC; --ok:#2E8B57; --warn:#E0A100; --bad:#C0392B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--slate);background:#fff;line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Montserrat,Inter,Arial,sans-serif;color:var(--navy);line-height:1.2;margin:0}
+p{margin:0 0 14px}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 16px;z-index:100}
+.skip:focus{left:12px;top:12px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:10px;font-weight:600;font-size:1rem;text-decoration:none;border:2px solid transparent;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn svg{width:22px;height:22px;flex:none}
+.btn-gold{background:var(--gold);color:var(--navy);box-shadow:0 8px 20px rgba(193,134,37,.28)}
+.btn-gold:hover{box-shadow:0 12px 26px rgba(193,134,37,.4)}
+.btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-outline{border-color:var(--navy);color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-sm{padding:10px 18px;font-size:.92rem}
+
+/* Navegación */
+.nav{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 1px 0 var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;min-height:76px}
+.brand{font-family:Montserrat,sans-serif;font-weight:800;font-size:1.4rem;color:var(--navy);text-decoration:none;}
+.brand span{color:var(--gold);}
+.nav-links{display:none;gap:26px}
+.nav-links a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--navy);white-space:nowrap}
+.nav-links a:hover{color:var(--gold-d)}
+
+/* Hero */
+.hero{background:var(--navy);background-image:radial-gradient(900px 400px at 85% -10%,rgba(193,134,37,.22),transparent 60%);color:#fff;padding:52px 0 64px}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:40px}
+.eyebrow{display:inline-block;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#E5B25D;margin-bottom:16px}
+.hero h1{font-family:Montserrat,sans-serif;font-weight:800;font-size:2.8rem;margin-bottom:5px;}
+.lead{font-size:1.1rem;color:#D3DBE6;max-width:620px;margin-bottom:28px}
+.cta-row{display:flex;flex-direction:column;gap:14px;margin-bottom:28px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;padding:0;margin:0;list-style:none;font-size:.9rem;color:#C5D0DE}
+.trust li{display:flex;align-items:center;gap:8px}
+.trust li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);flex:none}
+
+/* Reporte de ejemplo (hero) */
+.mock{background:#fff;color:var(--slate);border-radius:16px;border-top:5px solid var(--gold);padding:22px;box-shadow:0 24px 50px rgba(0,0,0,.35);max-width:440px;margin:0 auto;width:100%}
+.mock-head{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.mock-head strong{font-family:Montserrat,Arial,sans-serif;color:var(--navy);font-size:.98rem}
+.badge{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px;background:#FFF3D6;color:var(--gold-d);white-space:nowrap}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.kpi{background:var(--light);border-radius:10px;padding:10px 12px}
+.kpi small{display:block;color:#5F6B7A;font-size:.74rem}
+.kpi b{font-family:Montserrat,Arial,sans-serif;color:var(--navy);font-size:1.12rem}
+.kpi em{font-style:normal;color:var(--ok);font-size:.78rem;font-weight:600}
+.alerts{list-style:none;margin:0 0 10px;padding:0}
+.alerts li{display:flex;gap:10px;align-items:flex-start;font-size:.86rem;padding:7px 0;border-top:1px dashed var(--line)}
+.dot{width:11px;height:11px;border-radius:50%;flex:none;margin-top:6px}
+.dot.y{background:var(--warn)} .dot.g{background:var(--ok)} .dot.r{background:var(--bad)}
+.mock-foot{font-size:.74rem;color:#6B7684;text-align:center;margin:0}
+
+/* Secciones */
+section{padding:72px 0}
+.alt{background:var(--light)}
+.sec-head{max-width:720px;margin:0 auto 40px;text-align:center}
+.sec-head h2{font-size:1.6rem;font-weight:800;margin-bottom:12px}
+.sec-head p{color:#555;font-size:1.05rem;margin:0}
+.kicker{display:block;font-size:.95rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr;gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
+.card h3{font-size:1.1rem;margin-bottom:8px}
+.card p{margin:0;color:#4a4a4a;font-size:.96rem}
+.pain{border-left:4px solid var(--gold)}
+.pain h3{font-size:1.05rem}
+.closing{text-align:center;max-width:680px;margin:34px auto 0;font-size:1.1rem;color:var(--navy);font-weight:500}
+
+/* Pasos & Onboarding */
+.onboarding-box {
+  background: #FFF3D6;
+  border: 1px solid #F1D79B;
+  border-radius: 12px;
+  padding: 20px 24px;
+  max-width: 720px;
+  margin: 36px auto 0;
+  text-align: center;
+}
+.onboarding-box h4 {
+  color: var(--navy);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.onboarding-box p {
+  color: #5b4210;
+  font-size: 0.98rem;
+  margin: 0;
+}
+.step .num{width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:Montserrat,Arial,sans-serif;font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.note{text-align:center;margin:28px auto 0;color:#5a5a5a;max-width:640px;font-size:.98rem}
+
+/* Ejemplo puente y alertas Nivel 0 */
+.example {
+  margin-top: 44px;
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 28px 22px;
+  color: #fff;
+}
+.example h3{color:#fff;font-size:1.4rem;margin-bottom:6px}
+.example .sub{color:#C5D0DE;margin-bottom:18px;font-size:.98rem}
+.bridge{width:100%;border-collapse:collapse;background:#fff;color:var(--slate);border-radius:12px;overflow:hidden;font-size:.96rem}
+.bridge td{padding:11px 16px;border-bottom:1px solid var(--line)}
+.bridge td:last-child{text-align:right;font-weight:600;white-space:nowrap}
+.bridge .pos td:last-child{color:var(--ok)} .bridge .neg td:last-child{color:var(--bad)}
+.bridge .total td{background:#FFF3D6;color:var(--navy);font-weight:700;border-bottom:0;font-size:1.04rem}
+.bridge .total td:last-child{color:var(--navy)}
+.example .tag{display:block;margin-top:12px;font-size:.82rem;color:#AFC0D4}
+
+/* Columnas Example */
+.example-col {
+  display: flex;
+  flex-direction: column;
+}
+.example-col h3 {
+  margin-bottom: 8px;
+}
+.example-col .sub {
+  min-height: 48px;
+  margin-bottom: 20px;
+}
+.example-col .bridge, .example-col .alerts {
+  height: 100%;
+}
+
+/* Rubros */
+.chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;padding:0;margin:0;list-style:none}
+.chips li{background:#fff;border:1px solid var(--line);color:var(--navy);font-weight:600;padding:12px 22px;border-radius:999px}
+
+/* Mini-diagnóstico */
+.mini{background:var(--navy);color:#fff;border-radius:22px;padding:34px 24px;display:grid;grid-template-columns:1fr;gap:22px;align-items:center}
+.mini h2{color:#fff;font-size:1.6rem;font-weight:800;margin-bottom:10px}
+.mini p{color:#D3DBE6;margin:0}
+.mini ol{margin:14px 0 0;padding-left:20px;color:#E7ECF3;font-size:.96rem}
+
+/* Planes */
+.plan{position:relative}
+.plan.featured{border:2px solid var(--gold);box-shadow:0 18px 40px rgba(22,40,66,.12)}
+.plan .tagline{color:#555;font-size:.96rem;margin-bottom:14px}
+.price{font-family:Montserrat,Arial,sans-serif;font-weight:800;color:var(--navy);font-size:2.3rem;line-height:1}
+.price small{font-family:Inter,Arial,sans-serif;font-weight:500;font-size:.95rem;color:#666}
+.plan ul{list-style:none;padding:0;margin:18px 0 22px}
+.plan li{position:relative;padding:7px 0 7px 28px;font-size:.95rem;border-top:1px solid #F0F2F5; line-height: 1.4; padding-bottom: 12px;}
+.plan li::before{content:"";position:absolute;left:0;top:11px;width:18px;height:18px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><circle cx='10' cy='10' r='10' fill='%23C18625'/><path d='M5.5 10.3l3 3 6-6.3' fill='none' stroke='%23162842' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat}
+.plan .ribbon{position:absolute;top:-13px;left:24px;background:var(--gold);color:var(--navy);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:999px}
+.fine{text-align:center;color:#666;font-size:.9rem;margin:22px auto 0;max-width:720px}
+.launch{margin:26px auto 0;max-width:760px;background:#FFF3D6;border:1px solid #F1D79B;color:#5b4210;border-radius:12px;padding:14px 18px;text-align:center;font-size:.96rem}
+.diy{margin:26px auto 0;max-width:760px;border:1px dashed #C4CCD6;border-radius:14px;padding:20px 22px;text-align:center;background:#fff}
+.diy h3{font-size:1.02rem;margin-bottom:6px}
+.diy p{margin:0 0 12px;font-size:.94rem;color:#555}
+
+/* Quién soy */
+.about{display:grid;grid-template-columns:1fr;gap:34px;align-items:start}
+.photo-wrap{display:flex;justify-content:center}
+.photo{width:180px;height:180px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 14px 34px rgba(22,40,66,.22)}
+.about h2{font-size:1.7rem;font-weight:800;margin-bottom:12px}
+.about .who{font-size:1.1rem;color:var(--navy);font-weight:500}
+.facts{display:grid;grid-template-columns:1fr;gap:12px;margin:22px 0 0;padding:0;list-style:none}
+.facts li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.94rem}
+.facts b{display:block;color:var(--navy);margin-bottom:2px}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 0;padding:0;list-style:none}
+.stats li{background:var(--navy);color:#fff;border-radius:999px;padding:8px 18px;font-size:.88rem;font-weight:600}
+.stats li span{color:var(--gold)}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 20px}
+details[open]{border-color:#D9C08A}
+summary{cursor:pointer;font-weight:600;color:var(--navy);padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold-d);font-size:1.5rem;line-height:1;flex:none}
+details[open] summary::after{content:"\2013"}
+details p{color:#4a4a4a;padding-bottom:16px;margin:0;font-size:.97rem}
+
+/* Cierre y contacto */
+.final{background:var(--navy);background-image:radial-gradient(800px 360px at 15% 120%,rgba(193,134,37,.2),transparent 60%);color:#fff;text-align:center}
+.final h2{color:#fff;font-size:1.8rem;font-weight:800;margin-bottom:14px}
+.final p{color:#D3DBE6;max-width:620px;margin:0 auto 26px;font-size:1.05rem}
+.final .cta-row{align-items:center;justify-content:center;margin-bottom:34px}
+.contact{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:center;list-style:none;margin:0;padding:0;font-size:.95rem;color:#C5D0DE}
+.contact a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+.contact a:hover{color:#fff}
+
+/* Footer */
+footer{background:var(--light);padding:34px 0 90px;border-top:1px solid var(--line);font-size:.88rem;color:#5F6B7A}
+.foot{display:grid;gap:18px;grid-template-columns:1fr;align-items:center}
+.foot-logo{display:flex}
+.foot img{height:54px;width:auto}
+.foot p{margin:0 0 6px}
+footer details{background:transparent;border:0;padding:0;margin-top:8px}
+footer summary{font-size:.88rem;font-weight:600;padding:6px 0;color:var(--navy);display:inline-flex}
+footer summary::after,footer details[open] summary::after{content:""}
+footer details p{padding:4px 0 0;font-size:.86rem}
+
+/* WhatsApp flotante */
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:60;display:flex;align-items:center;gap:10px;background:#25D366;color:#fff;text-decoration:none;font-weight:600;padding:14px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.28)}
+.wa-float svg{width:28px;height:28px;flex:none}
+.wa-float span{display:none}
+
+@media (min-width:760px){
+  .cta-row{flex-direction:row}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .grid.c2{grid-template-columns:repeat(2,1fr)}
+  .grid.c4{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:flex}
+  .facts{grid-template-columns:1fr 1fr}
+  .mini{grid-template-columns:1.4fr .6fr;padding:40px}
+  .foot{grid-template-columns:auto 1fr;gap:28px}
+  .wa-float span{display:inline}
+  .wa-float{padding:14px 20px}
+  .hero h1{font-size:2.9rem}
+  .sec-head h2{font-size:2rem}
+  .about h2{font-size:2rem}
+  .final h2{font-size:2.2rem}
+}
+@media (min-width:960px){
+  .hero{padding:84px 0 96px}
+  .sec-head h2{font-size:2.3rem}
+  .final h2{font-size:2.5rem}
+  .hero-grid{grid-template-columns:1.1fr .9fr;align-items:center}
+  .grid.c4{grid-template-columns:repeat(4,1fr)}
+  .about{grid-template-columns:260px 1fr;gap:56px}
+  .photo{width:200px;height:200px}
+  .photo-wrap{justify-content:flex-start}
+  .example{grid-template-columns:1fr 1fr;padding:36px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}.btn:hover{transform:none}}
+
+/* Quiz / Detector de Fugas */
+.quiz-wrapper { background: var(--navy); border-radius: 22px; padding: 40px 24px; max-width: 800px; margin: 0 auto; color: #fff; text-align: center; }
+.quiz-header h2 { color: #fff; font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
+.quiz-progress { font-size: 0.85rem; color: var(--gold); font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; display: block;}
+.quiz-question { font-size: 1.25rem; font-weight: 600; margin-bottom: 30px; line-height: 1.4; }
+.quiz-options { display: flex; flex-direction: column; gap: 16px; max-width: 600px; margin: 0 auto; }
+.quiz-options .btn-outline { background: var(--gold); border-color: var(--gold); color: var(--navy); text-align: left; justify-content: flex-start; padding: 18px 24px; transition: all 0.2s ease; font-weight: 700; }
+.quiz-options .btn-outline:hover { background: var(--gold-d); border-color: var(--gold-d); color: #fff; box-shadow: 0 8px 20px rgba(193,134,37,.28); }
+.quiz-feedback { margin-top: 24px; padding: 20px; border-radius: 12px; font-size: 1rem; display: none; text-align: left; line-height: 1.5; }
+.quiz-feedback.success { background: rgba(46, 139, 87, 0.15); border: 1px solid var(--ok); }
+.quiz-feedback.alert { background: rgba(192, 57, 43, 0.15); border: 1px solid var(--bad); }
+.quiz-next-container { margin-top: 24px; display: none; }
+#quiz-result { display: none; }
+#quiz-result h3 { color: var(--gold); font-size: 1.8rem; margin-bottom: 16px; font-weight: 800; }
+#quiz-result p { font-size: 1.1rem; color: #D3DBE6; margin-bottom: 34px; line-height: 1.6; }
+
+</style>
+</head>
+
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ============ NAVEGACIÓN ============ -->
+<header class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="#inicio" aria-label="Tu Socio Remoto, volver al inicio"><img src="logo.png" alt="Tu Socio Remoto" height="50" style="width: auto;"></a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#que-recibis">Qué recibís</a>
+      <a href="#planes">Planes</a>
+      <a href="#quien-soy">Quién soy</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn btn-navy btn-sm" href="#mini-diagnostico">Detector de fugas</a>
+  </div>
+</header>
+
+<main id="contenido">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <h1><span style="color: #ffffff;">TU SOCIO</span> <span style="color: #C18625;">REMOTO</span></h1>
+      <span class="eyebrow" style="margin-bottom: 24px;">Administración remota · Paraná, Entre Ríos</span>
+      <h2 style="color: #fff; font-weight: 800; font-size: 2.15rem; margin-bottom: 20px;">Tu cabeza en el negocio.<br><span style="color: var(--gold);">Tus números en orden.</span></h2>
+      <p class="lead">¿Cansado de trabajar todo el día en tu local y tener que administrar los números 'a ojo'? Dejá de improvisar. Pasame tu día por WhatsApp como te quede más cómodo y yo te devuelvo el control total de tu caja y tu rentabilidad.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/5493435710579?text=Hola%20Agust%C3%ADn%2C%20quiero%20delegar%20los%20n%C3%BAmeros%20de%20mi%20negocio.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Quiero delegar mis números
+        </a>
+        <a class="btn btn-ghost" href="#mini-diagnostico">Detector de fugas en 1 minuto</a>
+      </div>
+      <ul class="trust">
+        <li>Sin planillas complicadas, solo WhatsApp o lo que te quede más cómodo.</li>
+        <li>Reportes claros que se leen en 10 segundos.</li>
+        <li>Personalización en base a las necesidades de tu negocio.</li>
+        <li>Asesoramiento y seguimiento por parte de un profesional.</li>
+      </ul>
+    </div>
+
+    <!-- Reporte de ejemplo -->
+    <div class="mock" role="img" aria-label="Ejemplo ilustrativo de reporte semanal con plata disponible, ventas y alertas">
+      <div class="mock-head"><strong>Reporte semanal</strong><span class="badge">Preliminar</span></div>
+      <div class="kpis" style="grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+        <div class="kpi"><small>Plata disponible</small><b>$412.000</b></div>
+        <div class="kpi"><small>Ventas de la semana</small><b>$528.000</b> <em style="color: var(--ok); font-size: .78rem; font-weight: 600;">▲ 6%</em></div>
+        <div class="kpi"><small>Gastos acumulados</small><b>$185.000</b></div>
+        <div class="kpi"><small>Punto de equilibrio</small><b>Cubierto al 60%</b></div>
+      </div>
+      <ul class="alerts">
+        <li><span class="dot y"></span><span>Te deben $186.000: el 60% está en 2 clientes</span></li>
+        <li><span class="dot y"></span><span>Vencen $240.000 en los próximos 7 días</span></li>
+        <li><span class="dot g"></span><span>La caja cuadra</span></li>
+      </ul>
+      <p class="mock-foot">Ejemplo ilustrativo · no es un cliente real</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEMAS ============ -->
+<section class="alt" id="problemas">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">¿Te suena?</span>
+      <h2>Vendés, trabajás todo el día… y a fin de mes no sabés cuánto ganaste</h2>
+    </div>
+    <div class="grid c4">
+      <div class="card pain"><h3>“Facturo mucho, pero no veo la plata.”</h3></div>
+      <div class="card pain"><h3>“No sé cuánto me deja cada producto o servicio.”</h3></div>
+      <div class="card pain"><h3>“Mezclo la plata personal con la del negocio.”</h3></div>
+      <div class="card pain"><h3>“Los fiados se me pierden y no sé quién me debe.”</h3></div>
+      <div class="card pain"><h3>“No tengo tiempo de cargar datos en un sistema al cerrar el local.”</h3></div>
+      <div class="card pain"><h3>“Tengo miedo de pasarme del Monotributo por facturar a ciegas.”</h3></div>
+      <div class="card pain"><h3>“Pagué sistemas o apps que terminé abandonando por falta de tiempo.”</h3></div>
+      <div class="card pain"><h3>“Tengo toda la información desparramada en cuadernos y WhatsApp.”</h3></div>
+    </div>
+    <p class="closing">Todo esto tiene solución, y no pasa por aprender a usar una planilla.</p>
+  </div>
+</section>
+
+<!-- ============ CÓMO FUNCIONA ============ -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Cómo funciona</span>
+      <h2>Tres pasos, y ninguno es aprender un sistema</h2>
+      <p>Vos seguís haciendo lo que sabés hacer. Yo me ocupo de los números.</p>
+    </div>
+    <div class="grid c3">
+      <div class="card step"><div class="num">1</div><h3>Mandame tu día</h3><p>Un mensaje de WhatsApp, un audio o la foto de tu cuaderno. Como te quede más cómodo: yo me adapto a tu forma de anotar.</p></div>
+      <div class="card step"><div class="num">2</div><h3>Yo lo ordeno y lo controlo</h3><p>Cargo tus movimientos, reviso que la caja cuadre y te aviso si algo no cierra.</p></div>
+      <div class="card step"><div class="num">3</div><h3>Recibís tu reporte y mi criterio</h3><p>Un PDF en tu WhatsApp cada semana, un diagnóstico cada mes y mi análisis de qué conviene hacer.</p></div>
+    </div>
+    <div class="onboarding-box">
+      <h4>🚀 La puesta en marcha está incluida</h4>
+      <p>Te pido unos datos de arranque (tus productos, tus gastos fijos, la plata con la que empezás y tu sueldo) y arrancamos. Te dejo una guía con modelos de mensajes para que mandarme la información sea fácil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUÉ RECIBÍS ============ -->
+<section class="alt" id="que-recibis">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Qué recibís a cambio</span>
+      <h2>Números claros y alguien que te explica qué hacer con ellos</h2>
+    </div>
+    <div class="grid c3">
+      <div class="card"><h3>Reporte semanal</h3><p>Un PDF en tu WhatsApp con tu liquidez real, cuánto tenés en fiados por cobrar, a quién le debés y un semáforo con las alertas de la semana.</p></div>
+      <div class="card"><h3>Diagnóstico de fin de mes</h3><p>Sabrás tu ganancia operativa real, tu ticket promedio, tu punto de equilibrio exacto para no perder plata y el control de tu sueldo personal.</p></div>
+      <div class="card"><h3>Mi análisis profesional</h3><p>No recibís tableros mudos ni gráficos para adivinar. Cada informe viene con mi explicación directa de dónde se está yendo la plata y qué acciones tomar.</p></div>
+    </div>
+
+    <div class="example">
+      <div class="example-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+        
+        <!-- Columna 1 -->
+        <div class="example-col">
+          <h3>Ganaste $448.000, pero tenés $112.000.<br>¿Dónde está la plata?</h3>
+          <p class="sub">Una situación típica en los negocios chicos. Así se ve en un reporte:</p>
+          <table class="bridge">
+            <tbody>
+              <tr class="pos"><td>Ganancia del mes</td><td>+ $448.000</td></tr>
+              <tr class="pos"><td>Plata que ya tenías al empezar</td><td>+ $230.000</td></tr>
+              <tr class="neg"><td>Mercadería comprada que quedó sin usar</td><td>– $60.000</td></tr>
+              <tr class="neg"><td>Fiados sin cobrar</td><td>– $186.000</td></tr>
+              <tr class="pos"><td>Compras que todavía no pagaste</td><td>+ $95.000</td></tr>
+              <tr class="neg"><td>Sueldo que retiraste</td><td>– $415.000</td></tr>
+              <tr class="total"><td>Plata disponible</td><td>$112.000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Columna 2 -->
+        <div class="example-col">
+          <h3>Semáforos y Alertas Clave</h3>
+          <p class="sub">No más sorpresas. Así te aviso cuando algo requiere tu atención inmediata:</p>
+          <ul class="alerts" style="background: #fff; padding: 20px; border-radius: 12px; color: var(--slate); margin: 0;">
+            <li><span class="dot y"></span><span><strong>Posición Neta de Compromisos:</strong> En rojo. Te deben $186.000, pero vos debés $350.000 a proveedores. Hay un bache de $164.000.</span></li>
+            <li><span class="dot y"></span><span><strong>Venta Mínima (Equilibrio):</strong> Faltan $80.000 para cubrir tus gastos fijos del mes. Estás al 85%.</span></li>
+            <li><span class="dot r"></span><span><strong>Control de Sueldo:</strong> ¡Alerta! Ya retiraste el 105% del sueldo que te habías fijado. Te estás descapitalizando.</span></li>
+            <li><span class="dot g"></span><span><strong>Producto Estrella:</strong> El Combo Salmón representa el 42% de tus ingresos. ¡Cuidá ese stock!</span></li>
+          </ul>
+        </div>
+    
+      </div> <!-- Cierra example-grid -->
+      
+      <span class="tag" style="display: block; margin-top: 24px; text-align: center;">Ejemplo ilustrativo, con datos ficticios. No corresponde a un cliente real.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARA QUIÉN ============ -->
+<section id="para-quien">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Para quién es</span>
+      <h2>Para dueños que quieren dedicarse a su negocio</h2>
+      <p>Tener un empleado administrativo te cuesta un sueldo entero más cargas sociales. Con Tu Socio Remoto, tenés el mismo nivel de control financiero por <strong>una fracción de ese valor mensual</strong>.<br>El método funciona en cualquier rubro donde entra y sale plata todos los días.</p>
+    </div>
+    <ul class="chips">
+      <li>Talleres mecánicos o de chapa y pintura</li><li>Gastronomía</li><li>Gimnasios</li><li>Reventa y comercio</li><li>Peluquerías y estética</li><li>Servicios</li>
+    </ul>
+    <p class="note">¿Tu rubro no está en la lista? Escribime: el método se adapta.</p>
+  </div>
+</section>
+
+<!-- ============ MINI-DIAGNÓSTICO ============ -->
+<section class="alt" style="padding:56px 0" id="mini-diagnostico">
+  <div class="container">
+    <div class="sec-head" style="margin-bottom: 30px;">
+      <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--navy); margin-bottom: 12px;">¿Querés saber si tu negocio necesita o no administración remota?</h2>
+      <p style="color: #555; font-size: 1.05rem;">Realizá este mini-diagnóstico gratis de 5 minutos y descubrilo.</p>
+    </div>
+    <div class="quiz-wrapper">
+      <div id="quiz-active">
+        <div class="quiz-header">
+          <h2>Detector de Fugas Financieras</h2>
+          <span class="quiz-progress" id="quiz-progress">Pregunta 1 de 5</span>
+        </div>
+        <div class="quiz-question" id="quiz-question"></div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div id="quiz-feedback"></div>
+        <div class="quiz-next-container" id="quiz-next-container">
+          <button class="btn btn-gold" onclick="nextQuestion()">Siguiente Pregunta</button>
+        </div>
+      </div>
+      
+      <div id="quiz-result">
+        <h3>Resultados del Diagnóstico</h3>
+        <p id="quiz-result-text"></p>
+        <a class="btn btn-gold" style="font-size:1.1rem; padding: 18px 32px;" target="_blank" rel="noopener" href="https://wa.me/5493435710579?text=Hola%20Agust%C3%ADn%2C%20complet%C3%A9%20el%20Detector%20de%20Fugas%20Financieras%20y%20quiero%20charlar%20sobre%20mi%20negocio.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="margin-right:8px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Escribirle a Agustín por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANES ============ -->
+<section id="planes">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Planes</span>
+      <h2>Elegí hasta dónde querés delegar</h2>
+      <p>Los dos incluyen la puesta en marcha. Sin letra chica y sin que tengas que usar ninguna planilla.</p>
+    </div>
+    <div class="grid c2" style="max-width:860px;margin:0 auto">
+      <div class="card plan">
+        <h3>Nivel 0 - Control</h3>
+        <p class="tagline">Para ordenar tu caja y tus cuentas.</p>
+        <div style="font-family: Montserrat, Arial, sans-serif; font-weight: 700; color: var(--navy); font-size: 1.2rem; margin-bottom: 15px;">Servicio mensual a medida</div>
+        <ul>
+          <li>Puesta en marcha: Diseño del modelo a medida para tu negocio.</li>
+          <li>Carga diaria: Registramos tus ventas, cobros y gastos desde un simple mensaje o foto.</li>
+          <li>Control de Caja y Cuentas: Conciliación estricta para saber dónde está cada peso (efectivo, banco, Mercado Pago).</li>
+          <li>Gestión de Deudores y Proveedores: Seguimiento al día de quién te debe plata y qué tenés que pagar.</li>
+          <li>Control de Retiros: Monitoreo para asegurar que no mezcles bolsillos ni te descapitalices.</li>
+          <li>Reportes y Alertas Semanales: Un PDF claro con tus ventas, liquidez y alertas de urgencia.</li>
+          <li>Controles a medida: Si tu rubro necesita un seguimiento específico (turnos, comisiones, etc.), lo diseñamos para vos.</li>
+        </ul>
+        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://wa.me/5493435710579?text=Hola%20Agust%C3%ADn%2C%20quiero%20consultar%20por%20el%20plan%20Control.">Consultar tarifa por WhatsApp</a>
+      </div>
+      <div class="card plan featured">
+        <span class="ribbon">Más completo</span>
+        <h3 style="font-size: 1.05rem; line-height: 1.4; margin-bottom: 12px;">Nivel 1 - Control + Costos<br><span style="font-size: 0.9rem; color: var(--navy-2); font-weight: 600;">+ Matriz de precios y Punto de Equilibrio</span></h3>
+        <p class="tagline">Para saber qué te deja plata y a qué precio vender.</p>
+        <div style="font-family: Montserrat, Arial, sans-serif; font-weight: 700; color: var(--navy); font-size: 1.2rem; margin-bottom: 15px;">Servicio mensual a medida</div>
+        <ul>
+          <li>Todo lo incluido en el Nivel 0 (Control operativo).</li>
+          <li>Fichas técnicas y costeo: Saber al centavo cuánto cuesta cada artículo o servicio.</li>
+          <li>Control de consumo y stock: Alertas si estás gastando más materiales de los que deberías.</li>
+          <li>Simulador de Precios y Sensibilidad: Herramienta interactiva para proyectar qué pasa si subís un precio o cambian tus costos.</li>
+          <li>Puntos de Equilibrio Múltiples: Cálculo exacto de cuánto vender para no perder plata, cubrir tu sueldo y lograr tu meta.</li>
+          <li>Análisis de Rentabilidad: Identificamos qué productos son tus "estrellas" y cuáles te dan pérdida.</li>
+          <li>Reunión o video mensual con plan de acción estratégico.</li>
+        </ul>
+        <a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/5493435710579?text=Hola%20Agust%C3%ADn%2C%20quiero%20consultar%20por%20el%20plan%20Control%20%2B%20Costos.">Consultar tarifa por WhatsApp</a>
+      </div>
+    </div>
+    <p class="fine">Se recomienda una permanencia mínima de 3 meses porque los números recién muestran tendencias claras con el tiempo, pero al primer mes ya vas a estar viendo resultados. Podés darte de baja en cualquier momento con 7 días de aviso. <strong>Los honorarios se ajustan al volumen de movimientos de tu negocio.</strong></p>
+
+    <!-- Opcional: borrá este bloque si no querés mostrar el precio de lanzamiento -->
+    <div class="launch"><strong>Lanzamiento:</strong> Los primeros clientes acceden a una bonificación especial en la puesta en marcha. Consultame por WhatsApp.</div>
+
+    <!-- Opcional: bloque de planillas (ancla de precio). Borralo si no querés mostrarlo -->
+    <div class="diy">
+      <h3>¿Preferís llevarlo vos?</h3>
+      <p>Planillas autogestionadas, con una sesión de puesta en marcha de 60 minutos y sin soporte continuo.</p>
+      <a class="btn btn-outline btn-sm" target="_blank" rel="noopener" href="https://wa.me/5493435710579?text=Hola%20Agust%C3%ADn%2C%20quiero%20consultar%20por%20las%20planillas%20autogestionadas.">Consultar por las planillas</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUIÉN SOY ============ -->
+<section class="alt" id="quien-soy">
+  <div class="container about">
+    <div class="photo-wrap">
+      <!-- Cambiá este src por el de tu foto real -->
+      <img class="photo" src="perfil.jpg" alt="Agustín Miño" width="200" height="200">
+    </div>
+    <div>
+      <span class="kicker">Quién soy</span>
+      <h2>Mi nombre es Agustín Miño</h2>
+      <p class="who">Soy un Licenciado en Administración de Empresas y Analista en Gestión Administrativa, de Paraná.</p>
+      <p>Hace más de cuatro años trabajo en administración y control de gestión en empresas comerciales y de servicios. Llevé la facturación, los arqueos de caja, las conciliaciones bancarias, las cuentas corrientes con proveedores, los costos y los reportes tanto de un negocio que no registraba nada hasta los de una estación de servicios importante de la ciudad.</p>
+      <p>En una PyME de servicios digitalicé el área administrativa desde cero y armé un sistema de control para tener trazabilidad y claridad sobre la plata. Mi convicción es simple: un dueño no necesita una herramienta más, necesita alguien que le resuelva el problema.</p>
+      <p>Me recibí trabajando a jornada completa durante toda la carrera, así que sé lo que es tener poco tiempo y mucho por hacer. Por eso armé Tu Socio Remoto: para que vos te dediques a tu negocio y yo me ocupe de los números.</p>
+      <ul class="stats">
+        <li><span>+4</span> años de experiencia</li>
+        <li>Licenciado en Administración de Empresas</li>
+        <li>100% remoto</li>
+      </ul>
+      <ul class="facts">
+        <li><b>Formación</b>Licenciatura en Administración de Empresas y Tecnicatura en Gestión Administrativa, Universidad Católica Argentina (Paraná).</li>
+        <li><b>Experiencia</b>Más de 4 años gestionando flujos de caja, conciliaciones bancarias, auditoría de costos y reportes financieros para pymes.</li>
+        <li><b>Herramientas</b>Dominio de Excel avanzado, Power BI y sistemas ERP.</li>
+        <li><b>Cómo trabajo</b>100% remoto y vía WhatsApp. Vos me mandás un audio o foto al cerrar tu día y yo construyo tus tableros. Además, trabajo en equipo con tu contador para complementar lo impositivo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS ============ -->
+<section id="preguntas">
+  <div class="container">
+    <div class="sec-head">
+      <span class="kicker">Preguntas frecuentes</span>
+      <h2>Lo que suelen preguntarme</h2>
+    </div>
+    <div class="faq">
+      <details><summary>¿Reemplazás a mi contador?</summary><p>No. Yo me ocupo de la gestión: caja, costos, precios, lo que te deben y lo que debés. Tu contador sigue a cargo de lo impositivo y contable. Si querés, trabajo en conjunto con él.</p></details>
+      <details><summary>¿Tengo que aprender a usar una planilla?</summary><p>No. Me mandás tus movimientos por WhatsApp, en audio o con la foto de tu cuaderno, y yo me ocupo de cargarlos y ordenarlos.</p></details>
+      <details><summary>¿Qué tengo que mandarte?</summary><p>Lo que vendiste, lo que compraste o pagaste, quién te debe, a quién le debés y cuántos billetes hay en tu caja. Con un mensaje al cerrar el día alcanza; como mínimo, un resumen dos veces por semana. Te doy una guía con modelos para que sea fácil.</p></details>
+      <details><summary>¿Mis datos están seguros?</summary><p>Tus datos son tuyos. Se guardan en un archivo privado, hay un acuerdo de confidencialidad y, si decidís irte, te entrego tu información.</p></details>
+      <details><summary>¿Me vas a controlar los gastos personales?</summary><p>No. Lo único obligatorio es fijar tu sueldo, y solo me avisás si te pasaste o no. Si querés un control de tus gastos personales, me los compartís y te devuelvo un resumen; si no, no pasa nada.</p></details>
+      <details><summary>¿Hay permanencia?</summary><p>No hay permanencia mínima, pero se recomienda un mínimo de 3 meses, porque los números recién muestran tendencias con el tiempo. Siempre podés darte de baja con 7 días de aviso.</p></details>
+      <details><summary>¿Cuándo empiezo a ver resultados?</summary><p>Durante el primer mes hacemos la puesta en marcha y recibís reportes semanales preliminares. Al cierre del mes tenés tu primer diagnóstico completo, en los meses posteriores se suman reportes que comparan evolución mensual.</p></details>
+      <details><summary>¿Sirve para mi tipo de negocio?</summary><p>Está pensado para talleres, gastronomía, gimnasios, reventa y comercio, peluquerías y servicios. Si tu rubro no está, escribime y lo vemos.</p></details>
+      <details><summary>¿Es presencial o remoto?</summary><p>Es remoto: trabajo por WhatsApp y videollamada con negocios de Paraná y de todo el país. Si estás en Paraná, también podemos vernos en persona.</p></details>
+      <details><summary>¿Cuánto cuesta?</summary><p>Los planes los podes consultar por privado, es un monto mensual con la puesta en marcha incluida. Mirá la sección de planes o escribime y lo vemos según tu caso.</p></details>
+      <details><summary>¿Cómo empiezo?</summary><p>Escribime por WhatsApp. Contame como te fue en el test de un minuto y arrancamos a organizar tu negocio.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section class="final" id="contacto">
+  <div class="container">
+    <h2>Empecemos por tus números</h2>
+    <p>Escribime por WhatsApp y te cuento cómo arrancar. Sin compromiso.</p>
+    <div class="cta-row">
+      <a class="btn btn-gold" target="_blank" rel="noopener" href="https://wa.me/5493435710579?text=Hola%20Agust%C3%ADn%2C%20quiero%20delegar%20los%20n%C3%BAmeros%20de%20mi%20negocio.">Quiero delegar mis números</a>
+    </div>
+    <ul class="contact">
+      <li>WhatsApp <a href="https://wa.me/5493435710579" target="_blank" rel="noopener">343 571-0579</a></li>
+      <li><a href="mailto:agustinalexisminoduro@gmail.com">agustinalexisminoduro@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/agustinminoduro/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li>Paraná, Entre Ríos · servicio remoto</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container foot">
+    <div class="foot-logo">
+      <img src="logo.png" alt="Tu Socio Remoto" height="45" style="width: auto;">
+    </div>
+    <div>
+      <p>© 2026 Tu Socio Remoto · Lic. Agustín Alexis Miño Duro · Paraná, Entre Ríos.</p>
+      <p>Los ejemplos de este sitio son ilustrativos y no corresponden a clientes reales.</p>
+      <details>
+        <summary>Política de privacidad</summary>
+        <p>Este sitio no usa formularios ni herramientas de análisis. Si me escribís por WhatsApp o por correo, uso tus datos solo para responderte y, si contratás el servicio, para prestártelo. Podés pedirme en cualquier momento que los elimine.</p>
+      </details>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" target="_blank" rel="noopener" aria-label="Escribime por WhatsApp" href="https://wa.me/5493435710579?text=Hola%20Agust%C3%ADn%2C%20te%20escribo%20desde%20tu%20p%C3%A1gina%20web.">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <span>Escribime</span>
+</a>
+
+
+<script>
+  const quizData = [
+    {
+      q: '¿Tenés fijado un sueldo mensual estricto, o vas sacando plata de la caja a medida que necesitás?',
+      o1: 'Sí, lo tengo fijado',
+      f1: '✅ Muy bien, no mezclar el bolsillo propio con el del negocio es un gran paso para saber si tu negocio es rentable.',
+      o2: 'No, saco a medida que necesito',
+      f2: '⚠️ Estás mezclando tu bolsillo con el del negocio. Así es imposible saber si tu emprendimiento realmente da ganancia o si te lo estás comiendo por goteo. Tu Socio Remoto te controla los retiros para que dejes de descapitalizarte.'
+    },
+    {
+      q: 'Cuando mirás la plata que te quedó en la cuenta a fin de mes... ¿sabés exactamente por qué tenés esa cantidad y no más?',
+      o1: 'Sí, llevo un control total de todos mis egresos e ingresos',
+      f1: '✅ Identificar bien donde está el dinero (mercadería, cuentas por cobrar a clientes, etc), es una buena señal de organización.',
+      o2: 'No, a veces siento que falta',
+      f2: '⚠️ Facturar no es lo mismo que ganar. Tu ganancia puede estar inmovilizada en mercadería que no se usa, o en deudas de clientes. Tu Socio Remoto te arma un "puente" exacto para mostrarte dónde está escondida tu plata.'
+    },
+    {
+      q: 'Si te pregunto ahora mismo, ¿sabés el número exacto, al peso, de cuánta plata tenés "en la calle" de clientes que te deben?',
+      o1: 'Sí, sé exactamente la cifra',
+      f1: '✅ Saber la cantidad exacta de dinero en la calle permite saber como afrontar las necesidades de liquidez en un futuro.',
+      o2: 'No, lo tengo anotado por ahí / a ojo',
+      f2: '⚠️ Un negocio sin control estricto de deudores se queda sin liquidez para reponer mercadería. Tu Socio Remoto te envía un semáforo semanal diciéndote exactamente quién te debe y desde cuándo para que cobres.'
+    },
+    {
+      q: '¿Sabés exactamente qué día del mes terminás de pagar tus costos fijos (alquiler, luz, etc.) y empezás a ganar plata para vos?',
+      o1: 'Conozco exactamente el día en que cubro costos',
+      f1: '✅ Tener calculado cuando cubrís tus costos fijos te permite saber que no estás operando a pérdida.',
+      o2: 'No lo sé exacto',
+      f2: '⚠️ Estás trabajando a ciegas. Podés estar operando a pérdida sin darte cuenta hasta que es muy tarde. Tu Socio Remoto te calcula tu Venta Mínima para que sepas en qué momento del mes ya estás a salvo.'
+    },
+    {
+      q: '¿Sabés exactamente cuál de tus productos o servicios te deja más ganancia limpia y cuál podrías estar vendiendo a pérdida?',
+      o1: 'Sí, reconozco por orden qué producto me da más ganancia',
+      f1: '✅ Reconocer qué productos son los estrella te permite saber a qué dedicarle inversión y cuáles hay que reconsiderar.',
+      o2: 'No, me guío por intuición',
+      f2: '⚠️ Podrías estar subsidiando productos que te quitan tiempo y no te dejan margen. Tu Socio Remoto te dice qué producto es tu estrella y a cuál tenés que ajustarle el precio urgentemente.'
+    }
+  ];
+
+  let currentQuestion = 0;
+  let score = 0;
+
+  function loadQuestion() {
+    const data = quizData[currentQuestion];
+    document.getElementById('quiz-progress').textContent = `Pregunta ${currentQuestion + 1} de ${quizData.length}`;
+    document.getElementById('quiz-question').textContent = data.q;
+    document.getElementById('quiz-options').innerHTML = `
+      <button class="btn btn-outline" onclick="selectOption(true)">${data.o1}</button>
+      <button class="btn btn-outline" onclick="selectOption(false)">${data.o2}</button>
+    `;
+    document.getElementById('quiz-feedback').style.display = 'none';
+    document.getElementById('quiz-next-container').style.display = 'none';
+    document.getElementById('quiz-options').style.display = 'flex';
+  }
+
+  function selectOption(isYes) {
+    if(isYes) score++;
+    const data = quizData[currentQuestion];
+    document.getElementById('quiz-options').style.display = 'none';
+    const fbEl = document.getElementById('quiz-feedback');
+    fbEl.textContent = isYes ? data.f1 : data.f2;
+    fbEl.className = 'quiz-feedback ' + (isYes ? 'success' : 'alert');
+    fbEl.style.display = 'block';
+    document.getElementById('quiz-next-container').style.display = 'block';
+  }
+
+  function nextQuestion() {
+    currentQuestion++;
+    if(currentQuestion < quizData.length) {
+      loadQuestion();
+    } else {
+      showResults();
+    }
+  }
+
+  function showResults() {
+    document.getElementById('quiz-active').style.display = 'none';
+    document.getElementById('quiz-result').style.display = 'block';
+    const resEl = document.getElementById('quiz-result-text');
+    if(score === 5) {
+      resEl.innerHTML = `Diagnóstico: ✅ 5/5.<br><br>¡Felicidades! Tu negocio se encuentra más ordenado que el resto, pero esto es solo el comienzo. Ahora una última pregunta: ¿Te gustaría ganar tiempo y que un profesional se encargue de todos esos aspectos que te consumen horas? Envíame un WhatsApp y lo charlamos.`;
+    } else {
+      resEl.innerHTML = `Diagnóstico: ⚠️ ${score}/5.<br><br>Alerta: podrías estar descuidando números que afectan la rentabilidad de tu negocio y su futuro. Pero no te preocupes, Tu Socio Remoto se encarga de solucionarlo por vos.`;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadQuestion);
+</script>
+
+</body>
+</html>
